@@ -1,5 +1,4 @@
 ;;; -*- Mode: LISP; Syntax: COMMON-LISP; Package: CL-USER; Base: 10 -*-
-;;; $Header: /usr/local/cvsrep/cl-fad/cl-fad.asd,v 1.21 2009/09/30 14:23:09 edi Exp $
 
 ;;; Copyright (c) 2004-2010, Dr. Edmund Weitz.  All rights reserved.
 
@@ -27,22 +26,6 @@
 ;;; NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 ;;; SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#+:allegro (cl:require :osi)
-
-(asdf:defsystem #:cl-fad
-  :version "0.7.5"
-  :description "Portable pathname library"
-  :serial t
-  :license "BSD-2-Clause"
-  :components ((:file "packages")
-               #+:cormanlisp (:file "corman")
-               #+:openmcl (:file "openmcl")
-               (:file "fad")
-               (:file "path" :depends-on ("fad"))
-               (:file "temporary-files" :depends-on ("fad")))
-  :depends-on (#+sbcl :sb-posix :bordeaux-threads :alexandria))
-
-#+ignore
 (asdf:defsystem #:cl-fad-test
   :serial t
   :components ((:file "packages.test")
